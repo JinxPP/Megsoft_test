@@ -31,10 +31,9 @@ function convert(curr1, curr2, inputVal) {
       document.getElementById('result').value =
         Object.values(data.rates)[0].toFixed(2)
     })
-    .catch(() => {
-      alert('Conversion failed');
-    });
+    
 }
+
 
 
 
