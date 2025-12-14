@@ -24,17 +24,17 @@ btn.addEventListener('click',()=>{
     convert(curr1, curr2, inputVal)
 });
 
-function convert(curr1, curr2, iputVal) {
-  const host = 'api.frankfurter.dev'
-fetch(`https://${host}/v1/latest?base=${curr1}&symbols=${curr2}`)
-  .then((resp) => resp.json())
-  .then((data) => {
-    //const convertedAmount = (inputVal * data.rates[to]).toFixed(2);
-    document.getElementById('result').value = Object.values(data.rates)[0]
-
-
-  });
-
+function convert(curr1, curr2, inputVal) {
+  fetch(`https://api.frankfurter.dev/v1/latest?amount=${inputVal}&from=${curr1}&to=${curr2}`)
+    .then(resp => resp.json())
+    .then(data => {
+      document.getElementById('result').value =
+        Object.values(data.rates)[0].toFixed(2)
+    })
+    .catch(() => {
+      alert('Conversion failed');
+    });
 }
+
 
 
